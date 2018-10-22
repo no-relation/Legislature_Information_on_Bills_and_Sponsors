@@ -1,4 +1,4 @@
-#TX Lege (note: come up with a better name)
+#Texas Bill Sponsorships
 
 openstates.org API, building database including legislators, bills, and votes (joining class)
 
