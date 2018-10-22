@@ -1,8 +1,4 @@
 
-require 'rest-client'
-require 'json'
-require 'pry'
-
 def get_bills
 #make the web request
   response_string = RestClient.get("https://openstates.org/api/v1/bills/?state=tx&search_window=session&type=bill&apikey=45634606-b8ca-4b1a-a9a3-b06a908c47b5")
