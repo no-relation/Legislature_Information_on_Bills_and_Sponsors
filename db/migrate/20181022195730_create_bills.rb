@@ -1,0 +1,8 @@
+class CreateBills < ActiveRecord::Migration[5.2]
+  def change
+    create_table :bills do |t|
+      t.string :title
+      t.string :openstates_id
+    end
+  end
+end
