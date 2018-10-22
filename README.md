@@ -4,6 +4,11 @@ openstates.org API, building database including legislators, bills, and votes (j
 
 Possible queries: what bills did this legislator vote for, who voted for this bill, what bills had 
 
+Todo:
+* seed database with API data
+* build CLI interface
+
+
 Links:
 * http://docs.openstates.org/en/latest/api/index.html
 * METHOD = `metadata/tx?apikey=`, `?state=tx&apikey=` `bills`, 
