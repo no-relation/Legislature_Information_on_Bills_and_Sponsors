@@ -12,7 +12,7 @@ class Bill < ActiveRecord::Base
         # looks through all bills and counts how many dem sponsors per bill, returns the bill with largest count
 
         most_dem_count = 0
-        most_dem_bill = nil
+        most_dem_bill = []
         i = 1
         while i <= Bill.all.length
             the_count = Bill.find(i).sponsorships.count do |sponsor|
@@ -22,18 +22,22 @@ class Bill < ActiveRecord::Base
             end
             if the_count > most_dem_count
                 most_dem_count = the_count
-                most_dem_bill = Bill.find(i)
+                most_dem_bil = []
+                most_dem_bill << Bill.find(i)
+            elsif the_count == most_dem_count
+                most_dem_bill << Bill.find(i)
             end
             i += 1
         end
-        puts "The bill with most dem's is #{most_dem_bill.title} (#{most_dem_count} sponsors)."
+        titles = most_dem_bill.map {|bill| bill.title}
+        puts "There is/are #{titles.length} bill(s) with the most (#{most_dem_count}) dem sponsors: #{titles}."
         return most_dem_bill
     end
 
     def self.most_repub
         #same as above with repub
         most_repub_count = 0
-        most_repub_bill = nil
+        most_repub_bill = []
         i = 1
         while i <= Bill.all.length
             the_count = Bill.find(i).sponsorships.count do |sponsor|
@@ -43,11 +47,15 @@ class Bill < ActiveRecord::Base
             end
             if the_count > most_repub_count
                 most_repub_count = the_count
-                most_repub_bill = Bill.find(i)
+                most_repub_bill = []
+                most_repub_bill << Bill.find(i)
+            elsif the_count == most_repub_count
+                most_repub_bill << Bill.find(i)
             end
             i += 1
         end
-        puts "The bill with most repub's is #{most_repub_bill.title} (#{most_repub_count} sponsors)."
+        titles = most_repub_bill.map {|bill| bill.title}
+        puts "There is/are #{titles.length} bill(s) with the most (#{most_repub_count}) repub sponsors: #{titles}."
         return most_repub_bill
     end
 
