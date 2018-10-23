@@ -17,7 +17,7 @@ end
 # get_individual_bill(bill_id): sponsorships: bill_id, legislator_id, type
 Bill.all.each do |bill|
     result_hash = get_individual_bill(bill[:openstates_id])
-    result_hash["sponsors"].each do |sponsor| #bill_stats is a hash
+    result_hash["sponsors"].each do |sponsor| 
         Sponsorship.create(bill_id: Bill.get_ID(result_hash["id"]), legislator_id: Legislator.get_ID(sponsor["leg_id"]), sponsor_type: sponsor["type"])
     end
 end
