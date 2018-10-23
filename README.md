@@ -8,16 +8,16 @@ Todo:
 * ~~seed database with API data~~
 * build CLI interface
 * Hannah & Eddie : building out model methods
-    ** Legislator
-        * #bills
-        * #bills_primary (legislators who were primary sponsor)
-        * #bills_cosponsor 
-        * .most_active
-        * .least_active
-        * .dems
-        * .rep
+    * Legislator (Eddie)
+        * ~~#bills~~
+        * ~~#bills_primary (legislators who were primary sponsor)~~
+        * ~#bills_cosponsor~~
+        * ~~.most_active~~
+        * ~~.least_active~~
+        * ~~.dems~~
+        * ~~.reps~~
 
-    ** Bill
+    * Bill (Hannah)
         * #sponsors
         * #sponsors_primary
         * #sponsors_co
