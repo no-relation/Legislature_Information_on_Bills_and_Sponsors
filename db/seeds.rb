@@ -6,7 +6,7 @@ require 'pry'
 
 # get_bills: title, openstates_id
 get_bills.each do |bill|
-    Bill.create(title: bill["title"], openstates_id: bill["id"])
+    Bill.create(title: bill["title"], openstates_id: bill["id"], subjects: bill["subjects"])
 end
 
 # get_legislators: full_name, leg_id, party

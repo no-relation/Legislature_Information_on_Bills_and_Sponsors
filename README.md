@@ -5,10 +5,29 @@ openstates.org API, building database including legislators, bills, and votes (j
 Possible queries: what bills did this legislator vote for, who voted for this bill, what bills had 
 
 Todo:
-* seed database with API data
+* ~~seed database with API data~~
 * build CLI interface
-* Hannah: building out model methods
-* Eddie: building out seeds file for importing data
+* Hannah & Eddie : building out model methods
+    ** Legislator
+        * #bills
+        * #bills_primary (legislators who were primary sponsor)
+        * #bills_cosponsor 
+        * .most_active
+        * .least_active
+        * .dems
+        * .rep
+
+    ** Bill
+        * #sponsors
+        * #sponsors_primary
+        * #sponsors_co
+        * .most_bipartisan (array of equal dem/rep sponsors)
+        * .most_dem (array of most dem)
+        * .most_rep (array of most rep)
+
+
+
+* ~~Eddie: building out seeds file for importing data~~
 
 
 Links:
