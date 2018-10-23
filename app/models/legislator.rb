@@ -17,6 +17,7 @@ class Legislator < ActiveRecord::Base
         end
     end
 
+
     def bills_primary
         own_sponsorships = Sponsorship.all.select do |sponsoring|
             sponsoring.legislator_id == self.id && sponsoring.sponsor_type == "primary"
@@ -80,4 +81,5 @@ class Legislator < ActiveRecord::Base
             lege.party == "Republican"
         end
     end
+
 end
