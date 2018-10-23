@@ -2,6 +2,10 @@ class Legislator < ActiveRecord::Base
     has_many :sponsorships
     has_many :bills, through: :sponsorships
 
+    def self.all_but_lt_gov
+        self.all[1..self.all.length]
+    end
+
     def self.get_ID(query_id)
         result = self.all.find do |lege|
             lege.leg_id == query_id
@@ -63,5 +67,9 @@ class Legislator < ActiveRecord::Base
             end
         end
         rep_least_active
+    end
+
+    def self.dems
+
     end
 end
