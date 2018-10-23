@@ -9,7 +9,7 @@ Todo:
 * build CLI interface
 * Hannah & Eddie : building out model methods
     * Legislator (Eddie)
-        * #bills
+        * ~~#bills~~
         * #bills_primary (legislators who were primary sponsor)
         * #bills_cosponsor 
         * .most_active
