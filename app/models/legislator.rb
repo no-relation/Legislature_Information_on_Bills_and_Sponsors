@@ -12,4 +12,12 @@ class Legislator < ActiveRecord::Base
             result.id
         end
     end
+
+    def self.all_dems
+        
+    end
+
+    def self.all_repubs
+    end
+
 end
