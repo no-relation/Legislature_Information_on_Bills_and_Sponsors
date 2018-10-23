@@ -7,6 +7,8 @@ Possible queries: what bills did this legislator vote for, who voted for this bi
 Todo:
 * seed database with API data
 * build CLI interface
+* Hannah: building out model methods
+* Eddie: building out seeds file for importing data
 
 
 Links:
