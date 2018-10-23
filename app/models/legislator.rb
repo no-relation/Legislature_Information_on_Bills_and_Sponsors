@@ -12,4 +12,17 @@ class Legislator < ActiveRecord::Base
             result.id
         end
     end
+
+    def bills
+        own_sponsorships = []
+        own_sponsorships = Sponsorship.all.select do |sponsoring|
+            sponsoring.legislator_id == self.id
+        end 
+
+        own_sponsorships.map do |sponsoring|
+            Bill.all.find do |bill|
+                bill.id == sponsoring.bill_id
+            end
+        end
+    end
 end
