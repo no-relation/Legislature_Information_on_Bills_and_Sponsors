@@ -37,4 +37,8 @@ class Legislator < ActiveRecord::Base
         end
     end
 
+    def bills
+        self.bills_primary.concat(self.bills_cosponsor)
+    end
+
 end
