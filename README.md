@@ -7,15 +7,25 @@ Possible queries: what bills did this legislator vote for, who voted for this bi
 Todo:
 * ~~seed database with API data~~
 * build CLI interface
+    * User is prompted for what they want:
+        * "Bill with the most/least..."
+        * "Legislator with the most/least..."
+        * breakdown of 
+
 * Hannah & Eddie : building out model methods
     * Legislator (Eddie)
         * ~~#bills~~
         * ~~#bills_primary (legislators who were primary sponsor)~~
-        * ~#bills_cosponsor~~
+        * ~~#bills_cosponsor~~
         * ~~.most_active~~
         * ~~.least_active~~
         * ~~.dems~~
         * ~~.reps~~
+        * #bill_subjects
+        
+        Do we want to add..?
+        * senate (members of the senate)
+        * house
 
     * Bill (Hannah)
         * #sponsors
