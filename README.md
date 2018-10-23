@@ -14,8 +14,8 @@ Todo:
         * ~#bills_cosponsor~~
         * ~~.most_active~~
         * ~~.least_active~~
-        * .dems
-        * .rep
+        * ~~.dems~~
+        * ~~.reps~~
 
     * Bill (Hannah)
         * #sponsors

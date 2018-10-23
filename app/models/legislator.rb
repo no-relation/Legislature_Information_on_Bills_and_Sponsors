@@ -70,6 +70,14 @@ class Legislator < ActiveRecord::Base
     end
 
     def self.dems
+        self.all.select do | lege |
+            lege.party == "Democratic"
+        end
+    end
 
+    def self.reps 
+        self.all.select do | lege |
+            lege.party == "Republican"
+        end
     end
 end
