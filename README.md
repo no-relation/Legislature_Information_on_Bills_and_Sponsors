@@ -10,8 +10,8 @@ Todo:
 * Hannah & Eddie : building out model methods
     * Legislator (Eddie)
         * ~~#bills~~
-        * #bills_primary (legislators who were primary sponsor)
-        * #bills_cosponsor 
+        * ~~#bills_primary (legislators who were primary sponsor)~~
+        * ~#bills_cosponsor~~
         * .most_active
         * .least_active
         * .dems

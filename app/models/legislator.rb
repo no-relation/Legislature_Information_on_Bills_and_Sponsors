@@ -41,4 +41,15 @@ class Legislator < ActiveRecord::Base
         self.bills_primary.concat(self.bills_cosponsor)
     end
 
+    def self.most_active
+        highest_count = 0
+        rep_most_active = nil
+        self.all.each do | rep | 
+            if rep.bills.length > highest_count
+                rep_most_active = rep
+                highest_count = rep.bills.length
+            end
+        end
+        rep_most_active
+    end
 end
