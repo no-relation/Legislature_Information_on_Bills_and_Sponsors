@@ -46,6 +46,17 @@ class Legislator < ActiveRecord::Base
         self.bills_primary.concat(self.bills_cosponsor)
     end
 
+    def bill_subjects
+        subjects_array = []
+        self.bills.map do | bill |
+            subjects_array.push(bill.subjects)
+        end
+        clean_array = subjects_array.map do |item|
+            item.gsub(/[\\"+\[+\]]/,"").to_s.split(", ")
+        end
+        clean_array.flatten.uniq
+    end
+
     def self.most_active
         highest_count = 0
         rep_most_active = nil
