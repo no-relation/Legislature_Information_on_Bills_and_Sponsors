@@ -3,8 +3,13 @@ class Legislator < ActiveRecord::Base
     has_many :bills, through: :sponsorships
 
     def self.get_ID(query_id)
-        self.all.find do |lege|
+        result = self.all.find do |lege|
             lege.leg_id == query_id
-        end.id
+        end
+        if result == nil
+            return 0
+        else 
+            result.id
+        end
     end
 end

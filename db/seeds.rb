@@ -1,5 +1,5 @@
 require_relative 'api_communicator'
-
+require 'pry'
 # fake_dude = Legislator.create(full_name: "Fakey McFaker", leg_id: "FAKEID", party: "Democrat")
 # fake_bill = Bill.create(title: "Bill to make things better", openstates_id: "TXB00000000")
 # fake_sponsorship = Sponsorship.create(bill: fake_bill, legislator: fake_dude)
@@ -16,9 +16,10 @@ end
 
 # get_individual_bill(bill_id): sponsorships: bill_id, legislator_id, type
 Bill.all.each do |bill|
-    get_individual_bill(bill[:openstates_id]).each do |bill_stats|
-        bill_stats["sponsors"].each do |sponsor|
-            Sponsorship.create(bill_id: bill_stats["id"], legislator_id: sponsor["leg_id"], type: sponsor["type"])
-        end
+    result_hash = get_individual_bill(bill[:openstates_id])
+    result_hash["sponsors"].each do |sponsor| #bill_stats is a hash
+        Sponsorship.create(bill_id: Bill.get_ID(result_hash["id"]), legislator_id: Legislator.get_ID(sponsor["leg_id"]), sponsor_type: sponsor["type"])
     end
 end
+
+0
