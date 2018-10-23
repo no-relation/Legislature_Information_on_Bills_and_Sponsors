@@ -18,7 +18,7 @@ end
 Bill.all.each do |bill|
     get_individual_bill(bill[:openstates_id]).each do |bill_stats|
         bill_stats["sponsors"].each do |sponsor|
-            Sponsorship.create(bill_id: bill_stats["id"], legislature_id: sponsor["leg_id"], type: sponsor["type"])
+            Sponsorship.create(bill_id: bill_stats["id"], legislator_id: sponsor["leg_id"], type: sponsor["type"])
         end
     end
 end
