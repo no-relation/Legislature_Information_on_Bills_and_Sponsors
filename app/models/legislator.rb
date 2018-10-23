@@ -60,7 +60,7 @@ class Legislator < ActiveRecord::Base
     def self.least_active
         lowest_count = Float::INFINITY
         rep_least_active = nil
-        self.all.each do | rep | 
+        self.all_but_lt_gov.each do | rep | 
             if rep.bills.length < lowest_count
                 rep_least_active = rep
                 lowest_count = rep.bills.length
