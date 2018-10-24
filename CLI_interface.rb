@@ -12,36 +12,42 @@ def user_prompt
     puts "What would you like to know?"
 end
 
+def name_and_party(legislator)
+    party = nil
+    if lege.party == "Democratic"
+        party = "(D)"
+    elsif lege.party == "Republican"
+        party = "(R)"
+    end
+    "#{lege.full_name} #{party}"
+end
+
 def choice_list_legislators
     choices = {}
-    Legislator.all_but_lt_gov.each do |lege|
-        party = nil
-        if lege.party == "Democratic"
-            party = "(D)"
-        elsif lege.party == "Republican"
-            party = "(R)"
-        end
-
-        name_and_party = "#{lege.full_name} #{party}"
+    Legislator.all_but_lt_gov.each do |lege|        
         # add 'legislator name' => 'legislator id' keyvalue pair to choices
-        choices[name_and_party] = lege.id
+        choices[name_and_party(lege)] = lege.id
     end
     choices
 end
 
+# truncating bill title
+def title_truncate(bill)
+    title_array = bill.title.split
+    if title_array.length < 15
+        truncated_title = title_array.join(" ")
+    else
+        truncated_title = "#{title_array[0..15].join(" ")}..."
+    end
+    "#{bill.lege_id}: #{truncated_title}"
+end
+
 def choice_list_bills
     choices = {}
-    Bill.all.each do |bill|
-        # truncating bill title
-        title_array = bill.title.split
-        if title_array.length < 15
-            truncated_title = title_array.join(" ")
-        else
-            truncated_title = "#{title_array[0..15].join(" ")}..."
-        end
+    Bill.all.each do |bill|        
         # 'bill lege id':'bill title (truncated)' => 'bill index id' to choices
         # e.g. 'HB 21: Relating to public school...' => 1
-        choices["#{bill.lege_id}: #{truncated_title}"] = bill.id
+        choices[title_truncate(bill)] = bill.id
     end
     choices
 end
@@ -54,6 +60,7 @@ def array_to_english(array)
         first_part + " and #{array[-1]}"
     end
 end
+
 #         * "Bill with the most/least..."
 #         * "Legislator with the most/least..."
 def cli_superlative_sponsorships
@@ -69,6 +76,12 @@ def cli_superlative_sponsorships
     
     case pick
     when 1 #bill with most
+        puts "Fetching data..."
+        result = Bill.most_sponsors
+        result.each do |number, bills|
+            bill_names = bills.map {|bill| "truncated_title(bill)"}
+            puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
+        end
         
     when 2 #legislator(s) with most
         puts "Fetching data..."
