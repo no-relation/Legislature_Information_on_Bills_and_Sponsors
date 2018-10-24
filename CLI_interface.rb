@@ -45,12 +45,14 @@ def choice_list_bills
     end
     choices
 end
+
 #         * "Legislator with the most/least..."
+def cli_superlative_sponsorships
+    choices = {"Bills with most sponsorships" => 1, "Legislator with most sponsorships" => 2, "Bills"}
+end
 
 #         * "Bill with the most/least..."
 
-choices = {Legislator.all.third.full_name => Legislator.all.third.id, Legislator.all.fourth.full_name => Legislator.all.fourth.id}
-result = user_prompt
 binding.pry
 0
 #         * breakdown of:
