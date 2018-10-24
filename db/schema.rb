@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_23_152600) do
+ActiveRecord::Schema.define(version: 2018_10_24_185031) do
 
   create_table "bills", force: :cascade do |t|
     t.string "title"
     t.string "openstates_id"
     t.string "subjects"
+    t.string "lege_id"
   end
 
   create_table "legislators", force: :cascade do |t|
