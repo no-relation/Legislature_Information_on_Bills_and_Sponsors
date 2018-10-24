@@ -8,8 +8,8 @@ Todo:
 * ~~seed database with API data~~
 * build CLI interface
     * User is prompted for what they want:
-        * "Bill with the most/least..."
-        * "Legislator with the most/least..."
+        * ~~"Bill with the most/least..."~~
+        * ~~"Legislator with the most/least..."~~
         * breakdown of:
             * legislator's bills
             * whether they're the primary or cosponsor

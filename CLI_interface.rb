@@ -31,8 +31,7 @@ def choice_list_legislators
     choices
 end
 
-# truncating bill title
-def title_truncate(bill)
+def title_truncate_and_ID(bill)
     title_array = bill.title.split
     if title_array.length < 15
         truncated_title = title_array.join(" ")
@@ -47,7 +46,7 @@ def choice_list_bills
     Bill.all.each do |bill|        
         # 'bill lege id':'bill title (truncated)' => 'bill index id' to choices
         # e.g. 'HB 21: Relating to public school...' => 1
-        choices[title_truncate(bill)] = bill.id
+        choices[title_truncate_and_ID(bill)] = bill.id
     end
     choices
 end
@@ -71,7 +70,6 @@ def cli_superlative_sponsorships
         "...legislator(s) with least sponsorships" => 4,
         "...something else" => 5
     }
-
     pick = $prompt.select("I would like to know about...", choices)
     
     case pick
@@ -79,8 +77,13 @@ def cli_superlative_sponsorships
         puts "Fetching data..."
         result = Bill.most_sponsors
         result.each do |number, bills|
-            bill_names = bills.map {|bill| "truncated_title(bill)"}
-            puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
+            puts "#{bills.length} bills had #{number} sponsors."
+            puts "Would you like to see them? (y/n)"
+            reply = gets.chomp
+            if reply == 'y'
+                puts "Those bills are:"
+                bills.each {|bill| puts title_truncate_and_ID(bill)}
+            end
         end
         
     when 2 #legislator(s) with most
@@ -90,7 +93,19 @@ def cli_superlative_sponsorships
             member_names = members.map {|member| member.full_name}
             puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
         end
+
     when 3 #bill with least
+        puts "Fetching data..."
+        result = Bill.least_sponsors
+        result.each do |number, bills|
+            puts "#{bills.length} bills had #{number} sponsors."
+            puts "Would you like to see them? (y/n)"
+            reply = gets.chomp
+            if reply == 'y'
+                puts "Those bills are:"
+                bills.each {|bill| puts title_truncate_and_ID(bill)}
+            end
+        end
 
     when 4 #legislator with least
         puts "Fetching data..."
@@ -99,9 +114,11 @@ def cli_superlative_sponsorships
             member_names = members.map {|member| member.full_name}
             puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
         end
+
     when 5 #next menu
 
     end
+
 end
 
 welcome_explainer
