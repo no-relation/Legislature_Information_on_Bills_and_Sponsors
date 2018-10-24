@@ -71,21 +71,30 @@ def cli_superlative_sponsorships
     when 1 #bill with most
         
     when 2 #legislator(s) with most
+        puts "Fetching data..."
         result = Legislator.most_active
         result.each do |number, members|
-            # puts #{array_to_english(members)
+            member_names = members.map {|member| member.full_name}
+            puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
         end
     when 3 #bill with least
 
     when 4 #legislator with least
-
+        puts "Fetching data..."
+        result = Legislator.least_active
+        result.each do |number, members|
+            member_names = members.map {|member| member.full_name}
+            puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
+        end
     when 5 #next menu
 
     end
 end
 
-
-binding.pry
+welcome_explainer
+user_prompt
+cli_superlative_sponsorships
+# binding.pry
 0
 #         * breakdown of:
 #             * legislator's bills
