@@ -31,8 +31,8 @@ def choice_list_legislators
     choices
 end
 
-# truncating bill title
-def title_truncate(bill)
+# truncating bill title w/ bill id
+def title_truncate_and_ID(bill)
     title_array = bill.title.split
     if title_array.length < 15
         truncated_title = title_array.join(" ")
@@ -47,7 +47,7 @@ def choice_list_bills
     Bill.all.each do |bill|        
         # 'bill lege id':'bill title (truncated)' => 'bill index id' to choices
         # e.g. 'HB 21: Relating to public school...' => 1
-        choices[title_truncate(bill)] = bill.id
+        choices[title_truncate_and_ID(bill)] = bill.id
     end
     choices
 end
@@ -79,8 +79,9 @@ def cli_superlative_sponsorships
         puts "Fetching data..."
         result = Bill.most_sponsors
         result.each do |number, bills|
-            bill_names = bills.map {|bill| "truncated_title(bill)"}
-            puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
+            puts "#{bills.length} bills had #{number} sponsors."
+            puts "Those bills are:"
+            bills.each {|bill| puts title_truncate_and_ID(bill)}
         end
         
     when 2 #legislator(s) with most
