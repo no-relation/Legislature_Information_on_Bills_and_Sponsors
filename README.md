@@ -38,9 +38,9 @@ Todo:
         * house
 
     * Bill (Hannah)
-        * #sponsors
-        * #sponsors_primary
-        * #sponsors_co
+        * ~~#sponsors~~
+        * ~~#sponsors_primary~~
+        * #sponsors_co (nah, forget it)
         * .most_bipartisan (array of equal dem/rep sponsors)
         * ~~.most_dem (array of most dem)~~
         * ~~.most_rep (array of most rep)~~
