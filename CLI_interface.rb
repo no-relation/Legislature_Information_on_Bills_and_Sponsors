@@ -47,8 +47,12 @@ def choice_list_bills
 end
 
 def array_to_english(array)
-    first_part = array[0...-1].join(", ")
-    first_part + " and #{array[-1]}"
+    if array.length == 1
+        return array[0]
+    else
+        first_part = array[0...-1].join(", ")
+        first_part + " and #{array[-1]}"
+    end
 end
 #         * "Bill with the most/least..."
 #         * "Legislator with the most/least..."
@@ -69,8 +73,7 @@ def cli_superlative_sponsorships
     when 2 #legislator(s) with most
         result = Legislator.most_active
         result.each do |number, members|
-            
-            puts ""
+            # puts #{array_to_english(members)
         end
     when 3 #bill with least
 
