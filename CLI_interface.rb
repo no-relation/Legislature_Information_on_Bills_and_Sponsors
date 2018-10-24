@@ -46,12 +46,41 @@ def choice_list_bills
     choices
 end
 
+def array_to_english(array)
+    first_part = array[0...-1].join(", ")
+    first_part + " and #{array[-1]}"
+end
+#         * "Bill with the most/least..."
 #         * "Legislator with the most/least..."
 def cli_superlative_sponsorships
-    choices = {"Bills with most sponsorships" => 1, "Legislator with most sponsorships" => 2, "Bills"}
+    choices = {
+        "...bill(s) with most sponsorships" => 1, 
+        "...legislator(s) with most sponsorships" => 2, 
+        "...bill(s) with least sponsorships" => 3, 
+        "...legislator(s) with least sponsorships" => 4,
+        "...something else" => 5
+    }
+
+    pick = $prompt.select("I would like to know about...", choices)
+    
+    case pick
+    when 1 #bill with most
+        
+    when 2 #legislator(s) with most
+        result = Legislator.most_active
+        result.each do |number, members|
+            
+            puts ""
+        end
+    when 3 #bill with least
+
+    when 4 #legislator with least
+
+    when 5 #next menu
+
+    end
 end
 
-#         * "Bill with the most/least..."
 
 binding.pry
 0
