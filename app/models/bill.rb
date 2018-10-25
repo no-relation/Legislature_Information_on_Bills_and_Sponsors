@@ -85,60 +85,56 @@ class Bill < ActiveRecord::Base
         end
         #puts "There is/are #{least_sponsors_bill.length} bill(s) with the least (#{least_sponsors_count}) sponsors."
         return {least_sponsors_count => least_sponsors_bill}
-    end
+    end  
 
 
     def self.most_dem
         # looks through all bills and counts how many dem sponsors per bill, returns the bill with largest count
         most_dem_count = 0
         most_dem_bill = []
-        i = 1
-        while i <= Bill.all.length
-            the_count = Bill.find(i).sponsorships.count do |sponsor|
+        Bill.all.each do |bill|
+            the_count = bill.sponsorships.count do |sponsor|
                 if sponsor["legislator_id"] != 0
                     Legislator.find(sponsor["legislator_id"]).party == "Democratic"
-                end    
-            end    
+                end
+            end 
             if the_count > most_dem_count
                 most_dem_count = the_count
                 most_dem_bil = []
-                most_dem_bill << Bill.find(i)
+                most_dem_bill << bill
             elsif the_count == most_dem_count
-                most_dem_bill << Bill.find(i)
+                most_dem_bill << bill
             end    
-            i += 1
         end    
         titles = most_dem_bill.map {|bill| bill.title}
         #puts "There is/are #{titles.length} bill(s) with the most (#{most_dem_count}) dem sponsors: #{titles}."
         return most_dem_bill
-    end    
+    end
 
 
     def self.most_repub
-        #same as above with repub
+        # looks through all bills and counts how many repub sponsors per bill, returns the bill with largest count
         most_repub_count = 0
         most_repub_bill = []
-        i = 1
-        while i <= Bill.all.length
-            the_count = Bill.find(i).sponsorships.count do |sponsor|
+        Bill.all.each do |bill|
+            the_count = bill.sponsorships.count do |sponsor|
                 if sponsor["legislator_id"] != 0
                     Legislator.find(sponsor["legislator_id"]).party == "Republican"
-                end    
-            end    
+                end
+            end 
             if the_count > most_repub_count
                 most_repub_count = the_count
-                most_repub_bill = []
-                most_repub_bill << Bill.find(i)
+                most_repub_bil = []
+                most_repub_bill << bill
             elsif the_count == most_repub_count
-                most_repub_bill << Bill.find(i)
+                most_repub_bill << bill
             end    
-            i += 1
         end    
         titles = most_repub_bill.map {|bill| bill.title}
         #puts "There is/are #{titles.length} bill(s) with the most (#{most_repub_count}) repub sponsors: #{titles}."
         return most_repub_bill
-    end        
-
+    end
+     
 
     def bipartisan_count
         dem_count = sponsor_count_by_party("Democratic")
