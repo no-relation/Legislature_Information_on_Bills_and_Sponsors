@@ -40,6 +40,14 @@ class Bill < ActiveRecord::Base
             Legislator.find(sponsor["legislator_id"]).full_name
         end
     end
+
+    #helper method
+    def turn_sponsorships_array_into_leg_array(array)
+        cleaned_array = clean_array_of_leg_id_0(array)
+        array_of_leg = cleaned_array.map do |sponsor|
+            Legislator.find(sponsor["legislator_id"])
+        end
+    end
     
 
     def self.most_sponsors
@@ -150,10 +158,10 @@ class Bill < ActiveRecord::Base
         array = self.sponsorships.select do |sponsor|
             sponsor.sponsor_type == "primary"
         end
-        array_of_names = turn_array_of_legislators_to_full_names(array)
+        #array_of_names = turn_array_of_legislators_to_full_names(array)
         #puts "There are #{array_of_names.count} primary sponsors: #{array_of_names}"
-        return array
-        # use eddie's method here to have D or R next to name
+        array_of_leg = turn_sponsorships_array_into_leg_array(array)
+        return array_of_leg
     end
 
 
@@ -162,9 +170,10 @@ class Bill < ActiveRecord::Base
         array = self.sponsorships.select do |sponsor|
             sponsor.sponsor_type == "cosponsor"
         end
-        array_of_names = turn_array_of_legislators_to_full_names(array)
+        #array_of_names = turn_array_of_legislators_to_full_names(array)
         #puts "There are #{array_of_names.count} cosponsors: #{array_of_names}"
-        return array
+        array_of_leg = turn_sponsorships_array_into_leg_array(array)
+        return array_of_leg
     end
 
 
@@ -173,9 +182,10 @@ class Bill < ActiveRecord::Base
         array = self.sponsorships.select do |sponsor|
             sponsor.sponsor_type == "primary" || sponsor.sponsor_type == "cosponsor"
         end
-        array_of_names = turn_array_of_legislators_to_full_names(array)
+        #array_of_names = turn_array_of_legislators_to_full_names(array)
         #puts "There are #{array_of_names.count} sponsors: #{array_of_names}"
-        return array
+        array_of_leg = turn_sponsorships_array_into_leg_array(array)
+        return array_of_leg
     end
 
 
