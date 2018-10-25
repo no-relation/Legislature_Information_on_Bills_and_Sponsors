@@ -100,7 +100,7 @@ class Bill < ActiveRecord::Base
             end 
             if the_count > most_dem_count
                 most_dem_count = the_count
-                most_dem_bil = []
+                most_dem_bill = []
                 most_dem_bill << bill
             elsif the_count == most_dem_count
                 most_dem_bill << bill
@@ -124,7 +124,7 @@ class Bill < ActiveRecord::Base
             end 
             if the_count > most_repub_count
                 most_repub_count = the_count
-                most_repub_bil = []
+                most_repub_bill = []
                 most_repub_bill << bill
             elsif the_count == most_repub_count
                 most_repub_bill << bill
@@ -144,8 +144,67 @@ class Bill < ActiveRecord::Base
     end
 
 
+    def self.most_relative_dem
+        most_dem_ratio = 0 #1 is highest
+        most_dem_bill = []
+        return_hash = {}
+
+        Bill.all.each do |bill|
+            bipartisan_hash = bill.bipartisan_count
+            if bipartisan_hash["Democratic"] > 1
+                ratio_hash = {bipartisan_hash["Democratic"] => (bipartisan_hash["Republican"] + bipartisan_hash["Democratic"])}
+                ratio_num = bipartisan_hash["Democratic"] / ratio_hash[bipartisan_hash["Democratic"]]
+                if ratio_num > most_dem_ratio
+                    most_dem_ratio = ratio_num
+                    most_dem_bill = []
+                    most_dem_bill << bill
+                    return_hash = ratio_hash
+                elsif ratio_num == most_dem_ratio
+                    most_dem_bill << bill
+                end
+            end
+        end
+        # puts most_dem_ratio
+        # puts most_dem_bill
+        # puts most_dem_bill.length
+        # puts return_hash
+        return {return_hash => most_dem_bill}
+    end
+
+
+    def self.most_relative_repub
+        most_repub_ratio = 0 #1 is highest
+        most_repub_bill = []
+        return_hash = {}
+
+        Bill.all.each do |bill|
+            bipartisan_hash = bill.bipartisan_count
+            if bipartisan_hash["Republican"] > 1
+                ratio_hash = {bipartisan_hash["Republican"] => (bipartisan_hash["Democratic"] + bipartisan_hash["Republican"])}
+                ratio_num = bipartisan_hash["Republican"] / ratio_hash[bipartisan_hash["Republican"]]
+                if ratio_num > most_repub_ratio
+                    most_repub_ratio = ratio_num
+                    most_repub_bill = []
+                    most_repub_bill << bill
+                    return_hash = ratio_hash
+                elsif ratio_num == most_repub_ratio
+                    most_repub_bill << bill
+                end
+            end
+        end
+        return {return_hash => most_repub_bill}
+    end
+
+
     def self.most_bipartisan
         #iterates thru each bill to find bipartisan_count, creates a ratio, sorts, returns middle
+        an_array = []
+
+        Bill.all.each do |bill|
+            an_array << {bill => bill.bipartisan_count}
+        end
+
+        an_array.sort
     end
 
 
