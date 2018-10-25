@@ -28,7 +28,7 @@ def choice_list_legislators
     choices = {}
     Legislator.all_but_lt_gov.each do |lege|        
         # add 'legislator name' => 'legislator id' keyvalue pair to choices
-        choices[name_and_party(lege)] = lege.id
+        choices["#{name_and_party(lege)}, Dist. #{lege.district}"] = lege
     end
     choices
 end
@@ -48,7 +48,7 @@ def choice_list_bills
     Bill.all.each do |bill|        
         # 'bill lege id':'bill title (truncated)' => 'bill index id' to choices
         # e.g. 'HB 21: Relating to public school...' => 1
-        choices[title_truncate_and_ID(bill)] = bill.id
+        choices[title_truncate_and_ID(bill)] = bill
     end
     choices
 end
