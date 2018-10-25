@@ -196,16 +196,51 @@ class Bill < ActiveRecord::Base
     end
 
 
-    def self.most_bipartisan
-        #iterates thru each bill to find bipartisan_count, creates a ratio, sorts, returns middle
-        an_array = []
-
+    def self.bipartisan_is_50_50
+        return_array = []
         Bill.all.each do |bill|
-            an_array << {bill => bill.bipartisan_count}
-        end
+            a_hash = bill.bipartisan_count
+            a_ratio = 0.0
+            
+            if a_hash["Democratic"].to_f != 0
+                a_ratio = a_hash["Republican"].to_f / a_hash["Democratic"].to_f
+            elsif a_hash["Republican"].to_f != 0
+                a_ratio = a_hash["Democratic"].to_f / a_hash["Republican"].to_f
+            elsif a_hash["Democratic"].to_f == 0 && a_hash["Republican"].to_f == 0
+                a_ratio = 0
+            end
 
-        an_array.sort
+            if a_ratio == 1
+                return_array << bill
+            end
+        end
+        return_array
     end
+
+
+    # def self.most_bipartisan
+    #     #iterates thru each bill to find bipartisan_count, creates a ratio
+    #     most_bipartisan_ratio = 0
+    #     most_bipartisan_bill = []
+    #     a_ratio = 0.001
+    #     Bill.all.each do |bill|
+    #         a_hash = bill.bipartisan_count
+    #         if a_hash["Republican"] > 0
+    #             a_ratio = a_hash["Democratic"] / a_hash["Republican"]
+    #         elsif a_hash["Republican"] == 0
+    #             a_ratio = 0
+    #         end
+    #         if a_ratio <= 1 && a_ratio > most_bipartisan_ratio
+    #             most_bipartisan_ratio = a_ratio
+    #             most_bipartisan_bill.clear
+    #             most_bipartisan_bill << {bill => a_ratio}
+    #         elsif a_ratio > 0 && a_ratio = most_bipartisan_ratio
+    #             most_bipartisan_bill << {bill => a_ratio}
+    #         end
+    #     end
+    #     most_bipartisan_bill
+    #     #bill.bipartisan_count
+    # end
 
 
     def primary_sponsors
