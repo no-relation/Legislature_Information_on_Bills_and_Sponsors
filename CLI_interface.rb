@@ -24,9 +24,10 @@ def name_and_party(legislator)
     "#{legislator.full_name} #{party}"
 end
 
-def choice_list_legislators
+
+def choice_list_legislators(array_of_lege_objects)
     choices = {}
-    Legislator.all_but_lt_gov.each do |lege| 
+    array_of_lege_objects.each do |lege|
         if lege.chamber == "upper"       
             senate_or_house = "Senate"
         elsif lege.chamber == "lower"
@@ -48,9 +49,9 @@ def title_truncate_and_ID(bill)
     "#{bill.lege_id}: #{truncated_title}"
 end
 
-def choice_list_bills
+def choice_list_bills(array_of_bill_objects)
     choices = {}
-    Bill.all.each do |bill|        
+    array_of_bill_objects.each do |bill|
         # 'bill lege id':'bill title (truncated)' => 'bill index id' to choices
         # e.g. 'HB 21: Relating to public school...' => 1
         choices[title_truncate_and_ID(bill)] = bill
@@ -80,10 +81,12 @@ def cli_legislators_or_bills_or_mostest
 
     case pick
     when 1
-        cli_bills
+        puts "What bill do you want to know more about?(Start typing to filter choices)"
+        cli_bills(choice_list_bills(Bill.all))
 
     when 2
-        cli_legislators
+        puts "What legislator do you want to know about? (Start typing to filter choices)"
+        cli_legislators(choice_list_legislators(Legislator.all_but_lt_gov))
 
     when 3
         cli_superlative_sponsorships
@@ -100,22 +103,58 @@ end
 # * bill with the most subjects
 # * bills by subject
 # * subject that appears in the most bills
-def cli_bills
+def cli_bills(choices)
     # pick a bill
-    choices = choice_list_bills
-    pick = $prompt.select("What bill do you want to know about? (Start typing to filter choices)", choices, filter: true)
+    pick = $prompt.select("", choices, filter: true)
 
+    bill_choices = {
+        "Who sponsored #{pick.lege_id}?" => 1,
+        "What were the subjects of #{pick.lege_id}?" => 2,
+        "Start over" => 3
+    }
+    selection = $prompt.select("What would you like to know about #{pick.lege_id}?", bill_choices)
+
+    case selection
+    when 1
+
+    when 2
+
+    when 3
+        cli_legislators_or_bills_or_mostest
+    end
 end
 
 # * breakdown of:
-# * legislator's bills
+    # * legislator's bills
 # * whether they're the primary or cosponsor
 # * the subjects of those bills
-def cli_legislators
-
+def cli_legislators(choices)
     # pick a legislator
-    choices = choice_list_legislators
-    pick = $prompt.select("What legislator do you want to know about? (Start typing to filter choices)", choices, filter: true)
+    pick = $prompt.select("", choices, filter: true)
+    
+    lege_choices = {
+        "What bills did #{pick.full_name} sponsor?" => 1,
+        "What bills did #{pick.full_name} cosponsor?" => 2,
+        "What are the subjects of the bills that #{pick.full_name} sponsored or cosponsored?" => 3,
+        "Start over" => 4
+    }
+    selection = $prompt.select("What would you like to know about #{pick.full_name}?", lege_choices)
+
+    case selection
+    when 1
+        choices = pick.bills_primary
+        puts "Which bill of #{pick.full_name} would you like to know more about?"
+        cli_bills(choices)
+    when 2
+
+    when 3
+
+    when 4
+        cli_legislators_or_bills_or_mostest
+    end
+end
+
+def cli_legislators_bills
 
 end
 
