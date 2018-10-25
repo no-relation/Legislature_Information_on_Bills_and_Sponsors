@@ -62,6 +62,14 @@ def choice_list_bills(array_of_bill_objects)
     choices
 end
 
+def choice_list_subjects(array_of_subjects)
+    choices = {}
+    array_of_subjects.each do |subject|
+        choices["Start over"] = "Start over"
+        choices[subject] = subject
+    end
+end
+
 def array_to_english(array)
     if array.length == 1
         return array[0]
@@ -139,6 +147,9 @@ def cli_bills(choices)
 
     # * a bill's subjects
     when 3
+        choices = choice_list_subjects(pick.subjects)
+        puts "What subjects of #{pick.lege_id} would you like to know more about?"
+        cli_subjects(choices)
 
     when 4
         cli_legislators_or_bills_or_mostest
@@ -173,18 +184,43 @@ def cli_legislators(choices)
         cli_bills(choices)
     # * the subjects of those bills
     when 3
+        choices = choice_list_subjects(pick.subjects)
+        puts "What subjects of #{pick.full_name} would you like to know more about?"
+        cli_subjects(choices)
 
     when 4
         cli_legislators_or_bills_or_mostest
     end
 end
 
-def cli_legislators_bills
+def cli_subjects(choices)
+    # Implement later if needed
+    # pick = $prompt.select("", choices, filter: true, per_page: 10)
+    # if pick == "Start over"
+    #     cli_legislators_or_bills_or_mostest
+    # end
 
+    # subj_choices = {
+    #     "What bills include #{pick}?" => 1,
+    # }
+    # end
+
+    pick = $prompt.select("", choices, filter: true, per_page: 10)
+    bills_by_subject = Bill.all.select do |bill|
+        bill.subjects.include?(pick)
+    end
+
+    puts "#{pick} appears in #{bills_by_subject.length} bills"
+    reply = $prompt.no?("Would you like to see them?")
+    if !reply
+        cli_bills(choice_list_bills(bills_by_subject))
+    else
+        cli_legislators_or_bills_or_mostest
+    end
 end
 
-def bills_sponsor_count(result)
-    result.each do |number, bills|
+def bills_sponsor_count(results)
+    results.each do |number, bills|
         if number == 1
             num_of_sponsors = "1 sponsor"
         else
@@ -201,6 +237,28 @@ def bills_sponsor_count(result)
         if !reply
             cli_bills(choice_list_bills(bills))
         else
+            cli_superlative_sponsorships
+        end
+    end
+end
+
+def legislators_bill_count(results)
+    results.each do |number, members|
+        if number == 1
+            num_of_bills = "1 bill"
+        else
+            num_of_bills = "#{number} bills"
+        end
+        if members.length == 1
+            num_of_sponsors = "1 legislator"
+        else
+            num_of_sponsors = "#{members.length} legislators"
+        end
+        puts "#{num_of_sponsors} have sponsored or cosponsored #{num_of_bills}."
+        reply = $prompt.no?("Would you like to see them?")
+        if !reply # why is this backwards?!
+            cli_legislators(choice_list_legislators(members))
+        else 
             cli_superlative_sponsorships
         end
     end
@@ -226,10 +284,10 @@ def cli_superlative_sponsorships
     when 2 #legislator(s) with most
         puts "Fetching data..."
         result = Legislator.most_active
-        result.each do |number, members|
-            member_names = members.map {|member| member.full_name}
-            puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
-        end
+        legislators_bill_count(result)
+            # member_names = members.map {|member| member.full_name}
+            # puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
+        # end
 
     when 3 #bill with least
         puts "Fetching data..."
@@ -237,14 +295,15 @@ def cli_superlative_sponsorships
         bills_sponsor_count(result)
 
     when 4 #legislator with least
-        puts ColorizedString["Fetching data..."].blink
+        puts "Fetching data..."
         result = Legislator.least_active
-        result.each do |number, members|
-            member_names = members.map {|member| member.full_name}
-            puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
-        end
+        legislators_bill_count(result)
+        # result.each do |number, members|
+        #     member_names = members.map {|member| member.full_name}
+        #     puts "#{array_to_english(member_names)} sponsored or cosponsored #{number} bills."
+        # end
 
-    when 5 #next menu
+    when 5 
         cli_legislators_or_bills_or_mostest
     end
 
