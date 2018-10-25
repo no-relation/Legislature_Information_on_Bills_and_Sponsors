@@ -97,9 +97,7 @@ def cli_legislators_or_bills_or_mostest
 end
 
 # * breakdown of;
-# * bill's sponsors
 # * most partisan or bipartisan
-# * a bill's subjects
 # * bill with the most subjects
 # * bills by subject
 # * subject that appears in the most bills
@@ -108,26 +106,32 @@ def cli_bills(choices)
     pick = $prompt.select("", choices, filter: true)
 
     bill_choices = {
-        "Who sponsored #{pick.lege_id}?" => 1,
-        "What were the subjects of #{pick.lege_id}?" => 2,
-        "Start over" => 3
+        "Who were primary sponsors of #{pick.lege_id}?" => 1,
+        "Who consponsored #{pick.lege_id}?" => 2,
+        "What were the subjects of #{pick.lege_id}?" => 3,
+        "Start over" => 4
     }
     selection = $prompt.select("What would you like to know about #{pick.lege_id}?", bill_choices)
 
     case selection
+    # * bill's sponsors
     when 1
-
+        choices = choice_list_legislators(pick.primary_sponsors)
+        puts "Which sponsor of #{pick.lege_id} would you like to know more about?"
+        cli_legislators(choices)
     when 2
+        # choices = choice_list_legislators(pick.cosponsors)
+        puts "Which cosponsor of #{pick.lege_id} would you like to know more about?"
+        cli_legislators(choices)
 
+    # * a bill's subjects
     when 3
+
+    when 4
         cli_legislators_or_bills_or_mostest
     end
 end
 
-# * breakdown of:
-    # * legislator's bills
-# * whether they're the primary or cosponsor
-# * the subjects of those bills
 def cli_legislators(choices)
     # pick a legislator
     pick = $prompt.select("", choices, filter: true)
@@ -141,12 +145,17 @@ def cli_legislators(choices)
     selection = $prompt.select("What would you like to know about #{pick.full_name}?", lege_choices)
 
     case selection
+    # * legislator's bills
+    # * whether they're the primary or cosponsor
     when 1
-        choices = pick.bills_primary
+        choices = choice_list_bills(pick.bills_primary)
         puts "Which bill of #{pick.full_name} would you like to know more about?"
         cli_bills(choices)
     when 2
-
+        choices = choice_list_bills(pick.bills_cosponsor)
+        puts "Which bill that #{pick.full_name} cosponsored woud you like to know more about?"
+        cli_bills(choices)
+    # * the subjects of those bills
     when 3
 
     when 4
