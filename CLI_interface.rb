@@ -106,7 +106,7 @@ end
 # * subject that appears in the most bills
 def cli_bills(choices)
     # pick a bill
-    pick = $prompt.select("", choices, filter: true)
+    pick = $prompt.select("", choices, filter: true, per_page: 10)
     if pick == "Start over"
         cli_legislators_or_bills_or_mostest
     end
@@ -147,7 +147,7 @@ end
 
 def cli_legislators(choices)
     # pick a legislator
-    pick = $prompt.select("", choices, filter: true)
+    pick = $prompt.select("", choices, filter: true, per_page: 10)
     if pick == "Start over"
         cli_legislators_or_bills_or_mostest
     end
@@ -183,6 +183,29 @@ def cli_legislators_bills
 
 end
 
+def bills_sponsor_count(result)
+    result.each do |number, bills|
+        if number == 1
+            num_of_sponsors = "1 sponsor"
+        else
+            num_of_sponsors = "#{number} sponsors"
+        end
+        if bills.length == 1
+            num_of_bills = "1 bill"
+        else
+            num_of_bills = "#{bills.length} bills"
+        end
+
+        puts "#{num_of_bills} had #{num_of_sponsors}."
+        reply = $prompt.no?("Would you like to see them?")
+        if !reply
+            cli_bills(choice_list_bills(bills))
+        else
+            cli_superlative_sponsorships
+        end
+    end
+end
+
 def cli_superlative_sponsorships
     choices = {
         "bill(s) with most sponsorships" => 1, 
@@ -197,17 +220,9 @@ def cli_superlative_sponsorships
     when 1 #bill with most
         puts "Fetching data..."
         result = Bill.most_sponsors
-        result.each do |number, bills|
-            puts "#{bills.length} bills had #{number} sponsors."
-            puts "Would you like to see them? (y/n)"
-            reply = gets.chomp
-            if reply == 'y'
-                puts "Those bills are:"
-                bills.each {|bill| puts title_truncate_and_ID(bill)}
-            end
-            cli_superlative_sponsorships
-        end
         
+        bills_sponsor_count(result)
+
     when 2 #legislator(s) with most
         puts "Fetching data..."
         result = Legislator.most_active
@@ -219,18 +234,10 @@ def cli_superlative_sponsorships
     when 3 #bill with least
         puts "Fetching data..."
         result = Bill.least_sponsors
-        result.each do |number, bills|
-            puts "#{bills.length} bills had #{number} sponsors."
-            puts "Would you like to see them? (y/n)"
-            reply = gets.chomp
-            if reply == 'y'
-                puts "Those bills are:"
-                bills.each {|bill| puts title_truncate_and_ID(bill)}
-            end
-        end
+        bills_sponsor_count(result)
 
     when 4 #legislator with least
-        puts "Fetching data..."
+        puts ColorizedString["Fetching data..."].blink
         result = Legislator.least_active
         result.each do |number, members|
             member_names = members.map {|member| member.full_name}
