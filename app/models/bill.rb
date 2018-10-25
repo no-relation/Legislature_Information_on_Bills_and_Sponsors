@@ -66,7 +66,7 @@ class Bill < ActiveRecord::Base
             end
         end
         #puts "There is/are #{most_sponsors_bill.length} bill(s) with the most (#{most_sponsors_count}) sponsors."
-        return most_sponsors_bill
+        return {most_sponsors_count => most_sponsors_bill}
     end
 
 
@@ -84,7 +84,7 @@ class Bill < ActiveRecord::Base
             end
         end
         #puts "There is/are #{least_sponsors_bill.length} bill(s) with the least (#{least_sponsors_count}) sponsors."
-        return least_sponsors_bill
+        return {least_sponsors_count => least_sponsors_bill}
     end
 
 
