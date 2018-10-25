@@ -209,8 +209,8 @@ class Bill < ActiveRecord::Base
 
     def subjects
         #output array with subjects of a bill
-        puts self["subjects"]
-        return self["subjects"]
+        clean_array = self["subjects"].gsub(/[\\"+\[+\]]/,"").to_s.split(", ")
+        return clean_array.flatten.uniq
     end
 
 
