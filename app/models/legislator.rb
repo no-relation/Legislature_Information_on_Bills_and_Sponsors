@@ -62,11 +62,11 @@ class Legislator < ActiveRecord::Base
         highest_count = 0
         reps_most_active = []
         self.all.each do | rep | 
-            if rep.bills.length > highest_count
+            if rep.sponsorships.length > highest_count
                 reps_most_active = []
                 reps_most_active << rep
-                highest_count = rep.bills.length
-            elsif rep.bills.length == highest_count
+                highest_count = rep.sponsorships.length
+            elsif rep.sponsorships.length == highest_count
                 reps_most_active << rep
             end
         end
@@ -77,11 +77,11 @@ class Legislator < ActiveRecord::Base
         lowest_count = Float::INFINITY
         reps_least_active = []
         self.all_but_lt_gov.each do | rep | 
-            if rep.bills.length < lowest_count
+            if rep.sponsorships.length < lowest_count
                 reps_least_active = []
                 reps_least_active << rep
-                lowest_count = rep.bills.length
-            elsif rep.bills.length == lowest_count
+                lowest_count = rep.sponsorships.length
+            elsif rep.sponsorships.length == lowest_count
                 reps_least_active << rep
             end
         end
