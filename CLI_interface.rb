@@ -26,9 +26,14 @@ end
 
 def choice_list_legislators
     choices = {}
-    Legislator.all_but_lt_gov.each do |lege|        
+    Legislator.all_but_lt_gov.each do |lege| 
+        if lege.chamber == "upper"       
+            senate_or_house = "Senate"
+        elsif lege.chamber == "lower"
+            senate_or_house = "House"
+        end
         # add 'legislator name' => 'legislator id' keyvalue pair to choices
-        choices["#{name_and_party(lege)}, Dist. #{lege.district}"] = lege
+        choices["#{name_and_party(lege)}, #{senate_or_house} Dist. #{lege.district}"] = lege
     end
     choices
 end
