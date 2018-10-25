@@ -4,8 +4,10 @@ $prompt = TTY::Prompt.new
 
 # * User is prompted for what they want:
 def welcome_explainer
-    puts "Texas Legislature Bill Sponsor Explorer Revealer Explainer"
-    puts "(from Open States API v1)"
+    print ColorizedString["Texas "].white.on_blue 
+    puts ColorizedString["Legislature Bill Sponsor Explorer Revealer Explainer"].black.on_white
+    print ColorizedString["(from "].white.on_blue 
+    puts ColorizedString["Open States API v1)"].white.on_red
 end
 
 def user_prompt
