@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_185031) do
+ActiveRecord::Schema.define(version: 2018_10_25_024231) do
 
   create_table "bills", force: :cascade do |t|
     t.string "title"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2018_10_24_185031) do
   create_table "legislators", force: :cascade do |t|
     t.string "full_name"
     t.string "leg_id"
+    t.string "district"
     t.string "party"
+    t.string "chamber"
   end
 
   create_table "sponsorships", force: :cascade do |t|

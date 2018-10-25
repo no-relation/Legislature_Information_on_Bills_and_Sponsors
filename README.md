@@ -7,12 +7,12 @@ Possible queries: what bills did this legislator vote for, who voted for this bi
 Todo:
 * ~~seed database with API data~~
 * build CLI interface
-    * User is prompted for what they want:
+    * ~~User is prompted for what they want:~~
         * ~~"Bill with the most/least..."~~
         * ~~"Legislator with the most/least..."~~
         * breakdown of:
-            * legislator's bills
-            * whether they're the primary or cosponsor
+            * ~~legislator's bills~~
+            * ~~whether they're the primary or cosponsor~~
             * the subjects of those bills
         * breakdown of;
             * bill's sponsors
@@ -33,10 +33,6 @@ Todo:
         * ~~.reps~~
         * ~~#bill_subjects~~
         
-        Do we want to add..?
-        * senate (members of the senate)
-        * house
-
     * Bill (Hannah)
         * ~~#sponsors~~
         * ~~#sponsors_primary~~
