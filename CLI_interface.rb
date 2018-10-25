@@ -126,6 +126,13 @@ def cli_bills(choices)
         puts "Which sponsor of #{pick.lege_id} would you like to know more about?"
         cli_legislators(choices)
     when 2
+        if pick.cosponsors.length == 0
+            puts "There are no cosponsors for #{pick.lege_id}"
+            choices = choice_list_legislators(pick.primary_sponsors)
+            puts "Which sponsor of #{pick.lege_id} would you like to know more about?"
+            cli_legislators(choices)    
+        end
+
         choices = choice_list_legislators(pick.cosponsors)
         puts "Which cosponsor of #{pick.lege_id} would you like to know more about?"
         cli_legislators(choices)
