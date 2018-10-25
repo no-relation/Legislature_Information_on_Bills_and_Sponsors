@@ -16,12 +16,12 @@ end
 
 def name_and_party(legislator)
     party = nil
-    if lege.party == "Democratic"
+    if legislator.party == "Democratic"
         party = "(D)"
-    elsif lege.party == "Republican"
+    elsif legislator.party == "Republican"
         party = "(R)"
     end
-    "#{lege.full_name} #{party}"
+    "#{legislator.full_name} #{party}"
 end
 
 def choice_list_legislators
@@ -88,6 +88,32 @@ def cli_legislators_or_bills_or_mostest
     end
 end
 
+# * breakdown of;
+# * bill's sponsors
+# * most partisan or bipartisan
+# * a bill's subjects
+# * bill with the most subjects
+# * bills by subject
+# * subject that appears in the most bills
+def cli_bills
+    # pick a bill
+    choices = choice_list_bills
+    pick = $prompt.select("What bill do you want to know about? (Start typing to filter choices)", choices, filter: true)
+
+end
+
+# * breakdown of:
+# * legislator's bills
+# * whether they're the primary or cosponsor
+# * the subjects of those bills
+def cli_legislators
+
+    # pick a legislator
+    choices = choice_list_legislators
+    pick = $prompt.select("What legislator do you want to know about? (Start typing to filter choices)", choices, filter: true)
+
+end
+
 def cli_superlative_sponsorships
     choices = {
         "bill(s) with most sponsorships" => 1, 
@@ -152,14 +178,3 @@ user_prompt
 cli_legislators_or_bills_or_mostest
 # binding.pry
 0
-#         * breakdown of:
-#             * legislator's bills
-#             * whether they're the primary or cosponsor
-#             * the subjects of those bills
-#         * breakdown of;
-#             * bill's sponsors
-#             * most partisan or bipartisan
-#             * a bill's subjects
-#             * bill with the most subjects
-#             * bills by subject
-#             * subject that appears in the most bills
