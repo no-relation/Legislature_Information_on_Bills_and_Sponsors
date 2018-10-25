@@ -64,13 +64,37 @@ end
 
 #         * "Bill with the most/least..."
 #         * "Legislator with the most/least..."
+def cli_legislators_or_bills_or_mostest
+    choices = {
+        "more about bills" => 1,
+        "more about legislators" => 2,
+        "what are the highest and lowest of bill sponsorships?" => 3,
+        "nevermind, I'm done" => 4
+    }
+    pick = $prompt.select("Tell me...", choices)
+
+    case pick
+    when 1
+        cli_bills
+
+    when 2
+        cli_legislators
+
+    when 3
+        cli_superlative_sponsorships
+
+    when 4 #exits program
+        exit 
+    end
+end
+
 def cli_superlative_sponsorships
     choices = {
-        "...bill(s) with most sponsorships" => 1, 
-        "...legislator(s) with most sponsorships" => 2, 
-        "...bill(s) with least sponsorships" => 3, 
-        "...legislator(s) with least sponsorships" => 4,
-        "...something else" => 5
+        "bill(s) with most sponsorships" => 1, 
+        "legislator(s) with most sponsorships" => 2, 
+        "bill(s) with least sponsorships" => 3, 
+        "legislator(s) with least sponsorships" => 4,
+        "something else, take me back" => 5
     }
     pick = $prompt.select("I would like to know about...", choices)
     
@@ -118,14 +142,14 @@ def cli_superlative_sponsorships
         end
 
     when 5 #next menu
-
+        cli_legislators_or_bills_or_mostest
     end
 
 end
 
 welcome_explainer
 user_prompt
-cli_superlative_sponsorships
+cli_legislators_or_bills_or_mostest
 # binding.pry
 0
 #         * breakdown of:
