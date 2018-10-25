@@ -11,7 +11,7 @@ end
 
 # get_legislators: full_name, leg_id, party
 get_legislators.each do |lege|
-    Legislator.create(full_name: lege['full_name'], leg_id: lege['id'], party: lege['party'])
+    Legislator.create(full_name: lege['full_name'], leg_id: lege['id'], party: lege['party'], district: lege['district'])
 end
 
 # get_individual_bill(bill_id): sponsorships: bill_id, legislator_id, type

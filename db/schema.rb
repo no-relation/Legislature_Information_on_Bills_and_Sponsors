@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_10_24_185031) do
   create_table "legislators", force: :cascade do |t|
     t.string "full_name"
     t.string "leg_id"
+    t.string "district"
     t.string "party"
   end
 
