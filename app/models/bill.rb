@@ -214,25 +214,15 @@ class Bill < ActiveRecord::Base
     end
 
 
-    # def self.subjects
-        #above method on all bills and output array.uniq
-        # array = []
-        # new_array = Bill.all.each do |bill|
-        #     nunu_array = array.concat(bill.subjects)
-        # end
-        # new_array.uniq b
-    # end
-
-    ## pending ##
-    # def self.subjects
-    #     subjects_array = []
-    #     self.bills.map do | bill |
-    #         subjects_array.push(bill.subjects)
-    #     end
-    #     clean_array = subjects_array.map do |item|
-    #         item.gsub(/[\\"+\[+\]]/,"").to_s.split(", ")
-    #     end
-    #     clean_array.flatten.uniq
-    # end
+    def self.subjects
+        subjects_array = []
+        Bill.all.map do | bill |
+            subjects_array.push(bill.subjects)
+        end
+        clean_array = subjects_array.map do |item|
+            item.gsub(/[\\"+\[+\]]/,"").to_s.split(", ")
+        end
+        return clean_array.flatten.uniq
+    end
 
 end
