@@ -157,6 +157,17 @@ class Bill < ActiveRecord::Base
     end
 
 
+    def cosponsors
+        #lists each cosponsor of a bill
+        array = self.sponsorships.select do |sponsor|
+            sponsor.sponsor_type == "cosponsor"
+        end
+        array_of_names = turn_array_of_legislators_to_full_names(array)
+        #puts "There are #{array_of_names.count} cosponsors: #{array_of_names}"
+        return array
+    end
+
+
     def all_sponsors
         #lists primary and cosponsors of a bill
         array = self.sponsorships.select do |sponsor|
