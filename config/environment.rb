@@ -8,4 +8,5 @@ ActiveRecord::Base.establish_connection(
 ActiveRecord::Base.logger = nil
 
 require_all 'app'
+require_all 'lib'
 require 'colorized_string'
