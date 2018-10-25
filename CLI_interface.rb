@@ -4,10 +4,11 @@ $prompt = TTY::Prompt.new
 
 # * User is prompted for what they want:
 def welcome_explainer
-    print ColorizedString["Texas "].white.on_blue 
-    puts ColorizedString["Legislature Bill Sponsor Explorer Revealer Explainer"].black.on_white
-    print ColorizedString["(from "].white.on_blue 
-    puts ColorizedString["Open States API v1)"].white.on_red
+    name = " Legislature Information on Bills and Sponsors "
+    print ColorizedString["_/\\_"].white.on_blue 
+    puts ColorizedString[name.center(name.length)].black.on_white
+    print ColorizedString["\\/\\/"].white.on_blue 
+    puts ColorizedString["(from Open States API v1)".center(name.length)].white.on_red
 end
 
 def user_prompt
@@ -34,6 +35,7 @@ def choice_list_legislators(array_of_lege_objects)
             senate_or_house = "House"
         end
         # add 'legislator name' => 'legislator id' keyvalue pair to choices
+        choices["Start over"] = "Start over"
         choices["#{name_and_party(lege)}, #{senate_or_house} Dist. #{lege.district}"] = lege
     end
     choices
@@ -54,6 +56,7 @@ def choice_list_bills(array_of_bill_objects)
     array_of_bill_objects.each do |bill|
         # 'bill lege id':'bill title (truncated)' => 'bill index id' to choices
         # e.g. 'HB 21: Relating to public school...' => 1
+        choices["Start over"] = "Start over"
         choices[title_truncate_and_ID(bill)] = bill
     end
     choices
@@ -91,7 +94,7 @@ def cli_legislators_or_bills_or_mostest
     when 3
         cli_superlative_sponsorships
 
-    when 4 #exits program
+    when 4 
         exit 
     end
 end
@@ -104,6 +107,9 @@ end
 def cli_bills(choices)
     # pick a bill
     pick = $prompt.select("", choices, filter: true)
+    if pick == "Start over"
+        cli_legislators_or_bills_or_mostest
+    end
 
     bill_choices = {
         "Who were primary sponsors of #{pick.lege_id}?" => 1,
@@ -120,7 +126,7 @@ def cli_bills(choices)
         puts "Which sponsor of #{pick.lege_id} would you like to know more about?"
         cli_legislators(choices)
     when 2
-        # choices = choice_list_legislators(pick.cosponsors)
+        choices = choice_list_legislators(pick.cosponsors)
         puts "Which cosponsor of #{pick.lege_id} would you like to know more about?"
         cli_legislators(choices)
 
@@ -135,7 +141,10 @@ end
 def cli_legislators(choices)
     # pick a legislator
     pick = $prompt.select("", choices, filter: true)
-    
+    if pick == "Start over"
+        cli_legislators_or_bills_or_mostest
+    end
+
     lege_choices = {
         "What bills did #{pick.full_name} sponsor?" => 1,
         "What bills did #{pick.full_name} cosponsor?" => 2,
@@ -189,6 +198,7 @@ def cli_superlative_sponsorships
                 puts "Those bills are:"
                 bills.each {|bill| puts title_truncate_and_ID(bill)}
             end
+            cli_superlative_sponsorships
         end
         
     when 2 #legislator(s) with most
@@ -228,6 +238,6 @@ end
 
 welcome_explainer
 user_prompt
-cli_legislators_or_bills_or_mostest
 # binding.pry
+cli_legislators_or_bills_or_mostest
 0
