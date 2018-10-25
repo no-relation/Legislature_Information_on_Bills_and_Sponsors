@@ -57,8 +57,8 @@ class Bill < ActiveRecord::Base
                 most_sponsors_bill << bill
             end
         end
-        puts "There is/are #{most_sponsors_bill.length} bill(s) with the most (#{most_sponsors_count}) sponsors."
-        return {most_sponsors_count => [most_sponsors_bill]}
+        #puts "There is/are #{most_sponsors_bill.length} bill(s) with the most (#{most_sponsors_count}) sponsors."
+        return most_sponsors_bill
     end
 
 
@@ -75,8 +75,8 @@ class Bill < ActiveRecord::Base
                 least_sponsors_bill << bill
             end
         end
-        puts "There is/are #{least_sponsors_bill.length} bill(s) with the least (#{least_sponsors_count}) sponsors."
-        return {least_sponsors_count => [least_sponsors_bill]}
+        #puts "There is/are #{least_sponsors_bill.length} bill(s) with the least (#{least_sponsors_count}) sponsors."
+        return least_sponsors_bill
     end
 
 
@@ -101,7 +101,7 @@ class Bill < ActiveRecord::Base
             i += 1
         end    
         titles = most_dem_bill.map {|bill| bill.title}
-        puts "There is/are #{titles.length} bill(s) with the most (#{most_dem_count}) dem sponsors: #{titles}."
+        #puts "There is/are #{titles.length} bill(s) with the most (#{most_dem_count}) dem sponsors: #{titles}."
         return most_dem_bill
     end    
 
@@ -127,7 +127,7 @@ class Bill < ActiveRecord::Base
             i += 1
         end    
         titles = most_repub_bill.map {|bill| bill.title}
-        puts "There is/are #{titles.length} bill(s) with the most (#{most_repub_count}) repub sponsors: #{titles}."
+        #puts "There is/are #{titles.length} bill(s) with the most (#{most_repub_count}) repub sponsors: #{titles}."
         return most_repub_bill
     end        
 
@@ -135,7 +135,7 @@ class Bill < ActiveRecord::Base
     def bipartisan_count
         dem_count = sponsor_count_by_party("Democratic")
         repub_count = sponsor_count_by_party("Republican")
-        puts "This bill had #{dem_count} dem sponsors and #{repub_count} repub sponsors."
+        #puts "This bill had #{dem_count} dem sponsors and #{repub_count} repub sponsors."
         return {"Democratic" => dem_count, "Republican" => repub_count}
     end
 
@@ -151,7 +151,7 @@ class Bill < ActiveRecord::Base
             sponsor.sponsor_type == "primary"
         end
         array_of_names = turn_array_of_legislators_to_full_names(array)
-        puts "There are #{array_of_names.count} primary sponsors: #{array_of_names}"
+        #puts "There are #{array_of_names.count} primary sponsors: #{array_of_names}"
         return array
         # use eddie's method here to have D or R next to name
     end
@@ -163,7 +163,7 @@ class Bill < ActiveRecord::Base
             sponsor.sponsor_type == "primary" || sponsor.sponsor_type == "cosponsor"
         end
         array_of_names = turn_array_of_legislators_to_full_names(array)
-        puts "There are #{array_of_names.count} sponsors: #{array_of_names}"
+        #puts "There are #{array_of_names.count} sponsors: #{array_of_names}"
         return array
     end
 
