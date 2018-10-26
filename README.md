@@ -5,8 +5,7 @@ Texas Legislature Information on Bills and Sponsors, or Texas LIBS, is a CLI app
 
 <a href="https://www.youtube.com/watch?v=kzLpHP4PDV8" target=_blank><img src="https://media.giphy.com/media/5t0xw5CIxGP2L4nPfG/giphy.gif" 
 alt="video demonstration" width="500" border="10" /></a>
-
-######click for full demo video
+###### *click for full demo video*
 
 To install, just download the repo into the folder of your choice and in the command line enter ```ruby bin/run.rb``` to run the program.
 
