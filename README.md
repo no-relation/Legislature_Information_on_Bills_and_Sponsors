@@ -1,8 +1,5 @@
-# Texas
-# **L**egislature 
-# **I**nformation on 
-# **B**ills and 
-# **S**ponsors
+# Texas LIBS
+## Texas Legislature Information on Bills and Sponsors
 
 Texas Legislature Information on Bills and Sponsors, or Texas LIBS, is a CLI application to access information about the 85th Texas Legislative special session. You can access bills by title, number or subject, or legislator who is primary- or co-sponsor.
 
