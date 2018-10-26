@@ -17,17 +17,17 @@ When presented with a list of bills or legislators, you can start typing to filt
 
 Once you choose a legislator, you will see various options like "What bills did he sponsor? What are the subjects of the bills he sponsored?", and similarly you will get options for bills like "Who were primary sponsors? What were the subjects?".
 
-To quit, navigate to the "Start over" option, and choose "nevermind I'm done".
-
-Our data is from an openstates.org API.
-
-<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true" alt="more about bills" width="500" height="283">
-
-<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/bills%20options.png?raw=true" alt="bill options" width="500" height="162">
-
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20legislators.png?raw=true" alt="more about legislators" width="500" height="230">
 
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/legislators%20options.png?raw=true" alt="legislator options" width="500" height="146">
+
+<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/bills%20options.png?raw=true" alt="bill options" width="500" height="162">
+
+<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true" alt="more about bills" width="500" height="283">
+
+To quit, navigate to the "Start over" option, and choose "nevermind I'm done".
+
+Our data is from an openstates.org API.
 
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/rabbithole.png?raw=true" alt="rabbithole" width="500" height="291">
 
