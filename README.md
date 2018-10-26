@@ -21,6 +21,7 @@ To quit, navigate to the "Start over" option, and choose "nevermind I'm done".
 Our data is from an openstates.org API.
       
 --
+<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true" alt="more about bills" width="200" height="100">
 
 ![alt text](https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true "more about bills" width="100")
 
