@@ -13,8 +13,14 @@ From the first page, you can use arrow keys to choose options: bills, legislator
 ![alt text](https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screen%20Shot%202018-10-26%20at%209.55.03%20AM.png?raw=true "intro menu")
 
 When presented with a list of bills or legislators, you can start typing to filter the search down if you're looking for something specific, for example to see if a particular word appears in a bill title or if you only remember your state rep as "Joan Somebody."
-      
 
+Once you choose a legislator, you will see various options like "What bills did he sponsor? What are the subjects of the bills he sponsored?", and similarly you will get options for bills like "Who were primary sponsors? What were the subjects?".
+
+To quit, navigate to the "Start over" option, and choose "nevermind I'm done".
+
+Our data is from an openstates.org API.
+      
+--
 
 openstates.org API, building database including legislators, bills, and votes (joining class)
 
