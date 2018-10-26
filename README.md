@@ -3,6 +3,10 @@
 
 Texas Legislature Information on Bills and Sponsors, or Texas LIBS, is a CLI application to access information about the 85th Texas Legislature special session, July 18th, 2017 to August 15th, 2017. You can access bills by title, number or subject, or legislator who is primary- or co-sponsor.
 
+<a href="https://www.youtube.com/watch?v=kzLpHP4PDV8
+" target="_blank"><img src="http://img.youtube.com/vi/kzLpHP4PDV8/0.jpg" 
+alt="YouTube video demonstration" width="240" height="180" border="10" /></a>
+
 To install, just download the repo into the folder of your choice and in the command line enter ```ruby bin/run.rb``` to run the program.
 
 From the first page, you can use arrow keys to choose options: bills, legislators, or various superlatives (which bills have the most sponsors? Which bills have the least? Which legislators have the most or least sponsorships? et cetera).
