@@ -309,10 +309,7 @@ class Bill < ActiveRecord::Base
         Bill.all.map do | bill |
             subjects_array.push(bill.subjects)
         end
-        clean_array = subjects_array.map do |item|
-            item.gsub(/[\\"+\[+\]]/,"").to_s.split(", ")
-        end
-        return clean_array.flatten.uniq
+        return subjects_array.flatten.uniq
     end
 
 end

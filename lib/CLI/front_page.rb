@@ -5,14 +5,15 @@ def cli_legislators_or_bills_or_mostest
     choices = {
         "more about bills" => 1,
         "more about legislators" => 2,
+        "what subjects appear in the bills" => 4,
         "what are the highest and lowest of bill sponsorships?" => 3,
-        "nevermind, I'm done" => 4
+        "nevermind, I'm done" => :bye
     }
     pick = $prompt.select("Tell me...", choices)
 
     case pick
     when 1
-        puts "What bill do you want to know more about?(Start typing to filter choices)"
+        puts "What bill do you want to know more about? (Start typing to filter choices)"
         cli_bills(choice_list_bills(Bill.all))
 
     when 2
@@ -23,6 +24,10 @@ def cli_legislators_or_bills_or_mostest
         cli_superlative_sponsorships
 
     when 4 
+        puts "What subject do you want to know about? (Start typing to filter choices)"
+        cli_subjects(Bill.subjects)
+
+    when :bye 
         exit 
     end
 end
