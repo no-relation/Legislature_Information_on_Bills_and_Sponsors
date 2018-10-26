@@ -16,7 +16,6 @@ def cli_subjects(choices)
 
     pick = $prompt.select("", choices, filter: true, per_page: 10)
     bills_by_subject = Bill.all.select do |bill|
-        binding.pry
         bill.subjects.include?(pick)
     end
 

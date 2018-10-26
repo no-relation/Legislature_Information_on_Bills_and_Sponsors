@@ -83,7 +83,7 @@ def cli_superlative_sponsorships
         "most bipartisan bill(s)" => 7,
         # "bill with the most subjects" => 8,
         # "subject with the most bills" => 9
-        "something else, take me back" => bye
+        "something else, take me back" => :bye
     }
     pick = $prompt.select("I would like to know about the...", choices, per_page: 10)
     
@@ -126,7 +126,7 @@ def cli_superlative_sponsorships
         puts "#{result.length} bills have equal Democratic and Republican sponsors."
         would_you_like_to_see(result, :bill)
         
-    when bye
+    when :bye
         cli_legislators_or_bills_or_mostest
     end
 
