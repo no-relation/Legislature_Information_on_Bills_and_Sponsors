@@ -5,31 +5,33 @@ Texas Legislature Information on Bills and Sponsors, or Texas LIBS, is a CLI app
 
 To install, just download the repo into the folder of your choice and in the command line enter ```ruby bin/run.rb```.
 
-From the first page, you can use arrow keys to choose options: bills, legislators, or various superlatives (which bills have the most sponsors? Which bills have the least? Which legislators have the most or least sponsorships? And so on.)
+From the first page, you can use arrow keys to choose options: bills, legislators, or various superlatives (which bills have the most sponsors? Which bills have the least? Which legislators have the most or least sponsorships? et cetera).
 
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/Welcome.png?raw=true" alt="intro menu" width="500" height="167">
 
-
 When presented with a list of bills or legislators, you can start typing to filter the search down if you're looking for something specific, for example to see if a particular word appears in a bill title or if you only remember your state rep as "Joan Somebody."
 
-Once you choose a legislator, you will see various options like "What bills did he sponsor? What are the subjects of the bills he sponsored?", and similarly you will get options for bills like "Who were primary sponsors? What were the subjects?".
+Once you choose a legislator, you will see various options like "What bills did he sponsor? What are the subjects of the bills he sponsored?", and similarly you will get options 
 
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20legislators.png?raw=true" alt="more about legislators" width="500" height="230">
 
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/legislators%20options.png?raw=true" alt="legislator options" width="500" height="146">
 
-<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/bills%20options.png?raw=true" alt="bill options" width="500" height="162">
-
+After selecting a bill, you'll be presented with options as well, like "Who were primary sponsors? What were the subjects?".
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true" alt="more about bills" width="500" height="283">
 
-To quit, navigate to the "Start over" option, and choose "nevermind I'm done".
+<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/bills%20options.png?raw=true" alt="bill options" width="500" height="162">
 
-Our data is from an openstates.org API.
-
+Pick a subject, and you can choose to see other bills that have that subject, or return to the first page.
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/rabbithole.png?raw=true" alt="rabbithole" width="500" height="291">
 
+Selecting ```Start over``` returns you to the start page. 
+To exit the program, return to the start page and choose ```nevermind I'm done```
 
----
+Our data is from an API provided by Open States. [Learn more about them here](https://openstates.org/ "Open States front page")
+
+
+<!---
 
 openstates.org API, building database including legislators, bills, and votes (joining class)
 
@@ -89,3 +91,4 @@ Links:
 * https://learn.co/tracks/web-development-immersive-2-0-module-one/project-mode/projects/module-one-final-project-guidelines
 * [TTY:Prompt README](https://github.com/piotrmurach/tty-prompt#ttyprompt-)
 * giffy gif https://flatiron-school.slack.com/files/UD5EL5LAF/FDK3DFTG9/image.png
+-->
