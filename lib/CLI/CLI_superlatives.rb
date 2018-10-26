@@ -112,7 +112,6 @@ def cli_superlative_sponsorships
     when 5 # most Dem
         puts "Fetching data..."
         result = Bill.most_relative_dem
-        binding.pry
         most_dem_or_repub(result, "Democratic")
 
     when 6 # most Repub
