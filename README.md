@@ -10,6 +10,7 @@ alt="video demonstration" width="500" border="10" /></a>
 To install, just download the repo into the folder of your choice and in the command line enter ```ruby bin/run.rb``` to run the program.
 
 From the first page, you can use arrow keys to choose options: bills, legislators, or various superlatives (which bills have the most sponsors? Which bills have the least? Which legislators have the most or least sponsorships? et cetera).
+
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/Welcome.png?raw=true" alt="intro menu" width="500" height="167">
 
 When presented with a list of bills or legislators, you can start typing to filter the search down if you're looking for something specific, for example to see if a particular word appears in a bill title or if you only remember your state rep as "Joan Somebody."
