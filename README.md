@@ -22,7 +22,7 @@ Our data is from an openstates.org API.
       
 --
 
-![alt text](https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true "more about bills" width="200")
+![alt text](https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true "more about bills" width="100")
 
 ![alt text](https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/bills%20options.png?raw=true "bills options")
 
