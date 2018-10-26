@@ -6,8 +6,6 @@ Texas Legislature Information on Bills and Sponsors, or Texas LIBS, is a CLI app
 <a href="https://www.youtube.com/watch?v=kzLpHP4PDV8" target=_blank><img src="https://raw.githubusercontent.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/master/Screenshots/demo%20video%20thumbnail.png" 
 alt="video demonstration" width="500" border="10" /></a>
 
-[![Alt text](https://raw.githubusercontent.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/master/Screenshots/demo%20video%20thumbnail.png)](https://youtu.be/kzLpHP4PDV8)
-
 To install, just download the repo into the folder of your choice and in the command line enter ```ruby bin/run.rb``` to run the program.
 
 From the first page, you can use arrow keys to choose options: bills, legislators, or various superlatives (which bills have the most sponsors? Which bills have the least? Which legislators have the most or least sponsorships? et cetera).
