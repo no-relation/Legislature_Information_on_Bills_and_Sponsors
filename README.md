@@ -21,15 +21,15 @@ To quit, navigate to the "Start over" option, and choose "nevermind I'm done".
 
 Our data is from an openstates.org API.
 
-<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true" alt="more about bills" width="500" height="200">
+<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20bills.png?raw=true" alt="more about bills" width="500" height="300">
 
-<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/bills%20options.png?raw=true" alt="bill options" width="500" height="200">
+<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/bills%20options.png?raw=true" alt="bill options" width="500" height="150">
 
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20legislators.png?raw=true" alt="more about legislators" width="500" height="200">
 
-<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/legislators%20options.png?raw=true" alt="legislator options" width="500" height="200">
+<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/legislators%20options.png?raw=true" alt="legislator options" width="500" height="150">
 
-<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/rabbithole.png?raw=true" alt="more options" width="500" height="200">
+<img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/rabbithole.png?raw=true" alt="more options" width="500" height="300">
 
 
 ---
