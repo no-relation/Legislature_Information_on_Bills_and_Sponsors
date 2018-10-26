@@ -10,7 +10,9 @@ To install, just download the repo into the folder of your choice and in the com
 
 From the first page, you can use arrow keys to choose options: bills, legislators, or various superlatives (which bills have the most sponsors? Which bills have the least? Which legislators have the most or least sponsorships? And so on.)
 
-![alt text](Legislature_Information_on_Bills_and_Sponsors/Screen Shot 2018-10-26 at 9.55.03 AM.png "intro menu")
+![alt text](https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screen%20Shot%202018-10-26%20at%209.55.03%20AM.png?raw=true "intro menu")
+
+When presented with a list of bills or legislators, you can start typing to filter the search down if you're looking for something specific, for example to see if a particular word appears in a bill title or if you only remember your state rep as "Joan Somebody."
       
 
 
