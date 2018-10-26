@@ -3,7 +3,7 @@
 
 Texas Legislature Information on Bills and Sponsors, or Texas LIBS, is a CLI application to access information about the 85th Texas Legislature special session, July 18th, 2017 to August 15th, 2017. You can access bills by title, number or subject, or legislator who is primary- or co-sponsor.
 
-To install, just download the repo into the folder of your choice and in the command line enter ```ruby bin/run.rb```.
+To install, just download the repo into the folder of your choice and in the command line enter ```ruby bin/run.rb``` to run the program.
 
 From the first page, you can use arrow keys to choose options: bills, legislators, or various superlatives (which bills have the most sponsors? Which bills have the least? Which legislators have the most or least sponsorships? et cetera).
 
@@ -11,7 +11,7 @@ From the first page, you can use arrow keys to choose options: bills, legislator
 
 When presented with a list of bills or legislators, you can start typing to filter the search down if you're looking for something specific, for example to see if a particular word appears in a bill title or if you only remember your state rep as "Joan Somebody."
 
-Once you choose a legislator, you will see various options like "What bills did he sponsor? What are the subjects of the bills he sponsored?", and similarly you will get options 
+Once you choose a legislator, you will see various options like "What bills did he sponsor? What are the subjects of the bills he sponsored?".
 
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/more%20about%20legislators.png?raw=true" alt="more about legislators" width="500" height="230">
 
@@ -23,12 +23,13 @@ After selecting a bill, you'll be presented with options as well, like "Who were
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/bills%20options.png?raw=true" alt="bill options" width="500" height="162">
 
 Pick a subject, and you can choose to see other bills that have that subject, or return to the first page.
+
 <img src="https://github.com/no-relation/Legislature_Information_on_Bills_and_Sponsors/blob/master/Screenshots/rabbithole.png?raw=true" alt="rabbithole" width="500" height="291">
 
 Selecting ```Start over``` returns you to the start page. 
 To exit the program, return to the start page and choose ```nevermind I'm done```
 
-Our data is from an API provided by Open States. [Learn more about them here](https://openstates.org/ "Open States front page")
+Our data is from an API provided by Open States. [Learn more about them here.](https://openstates.org/ "Open States front page")
 
 **Important Note:** this app uses Open States APIv1; after November 2018 portions of APIv1 will be removed, apparently including some fields used for this app. The database included in this app should remain unaffected.
 
